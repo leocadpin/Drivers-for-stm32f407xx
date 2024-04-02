@@ -13,9 +13,9 @@
 
 #define DRV_FLASH_BASEADDR 	        0x08000000U   // flash memory
 #define DRV_SRAM1_BASEADDR          0x20000000U
-#define DRV_SRAM1_BASEADDR          0x2001C000U   // auxiliar sram
+#define DRV_SRAM2_BASEADDR          0x2001C000U   // auxiliar sram
 #define DRV_ROM                     0x1FFF0000U   // System memory
-#define DRV_FLASH_BASEADDR          SRAM1_BASEADDR
+//#define DRV_FLASH_BASEADDR          SRAM1_BASEADDR
 
 // AHB and APB Bus Peripheral bases addresses
 
@@ -201,6 +201,22 @@ typedef struct
 
 //Clock disable  macros for SYSCFG peripherals
 #define SYSCFG_PCLK_DIS()   (RCC->APB2ENR &= ~(1 << 14))
+
+
+
+
+
+
+//Generic MACROS
+
+#define ENABLE          1
+#define DISABLE         0
+
+#define SET             ENABLE
+#define RESET           DISABLE
+
+#define GPIO_PIN_SET    SET
+#define GPIO_PIN_RESET  RESET
 
 #endif /* STM32F407XX_H_ */
 
