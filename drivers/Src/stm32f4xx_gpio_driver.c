@@ -114,3 +114,26 @@ void GPIO_PeriClock_Control(GPIO_RegDef_t *pGPIOx, uint8_t EnorDi)
 	}
 
 }
+
+void GPIO_Init(GPIO_Handle_t *pGPIOHandle)
+{
+	uint32_t temp = 0; //temp. register
+
+	//1-configure the mode of gpio pin
+
+	if(pGPIOHandle->GPIO_PinConfig.GPIO_PinMode <= GPIO_MODE_ANALOG)
+	{
+		temp = (pGPIOHandle->GPIO_PinConfig.GPIO_PinMode << (2 *pGPIOHandle->GPIO_PinConfig.GPIO_PinNumber) );
+		pGPIOHandle->pGPIOx->MODER = temp;
+		temp = 0;
+
+	}
+	else
+	{
+
+	}
+
+	temp = 0;
+   //2-Configure the speed
+	temp = pGPIOHandle->GPIO_PinConfig.GPIO_PinSpeed << (2 *pGPIOHandle->GPIO_PinConfig.GPIO_PinSpeed);
+}

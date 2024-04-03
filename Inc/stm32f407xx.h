@@ -27,40 +27,40 @@
 
 // Base addresses of peripherals which are hanging on AHB1 bus
 
-#define DRV_GPIOA_BASEADDR           (AHB1PERIPH_BASE + 0x0000)
-#define DRV_GPIOB_BASEADDR           (AHB1PERIPH_BASE + 0x0400)
-#define DRV_GPIOC_BASEADDR           (AHB1PERIPH_BASE + 0x0800)
-#define DRV_GPIOD_BASEADDR           (AHB1PERIPH_BASE + 0x0C00)
-#define DRV_GPIOE_BASEADDR           (AHB1PERIPH_BASE + 0x1000)
-#define DRV_GPIOF_BASEADDR           (AHB1PERIPH_BASE + 0x1400)
-#define DRV_GPIOG_BASEADDR           (AHB1PERIPH_BASE + 0x1800)
-#define DRV_GPIOH_BASEADDR           (AHB1PERIPH_BASE + 0x1C00)
-#define DRV_GPIOI_BASEADDR           (AHB1PERIPH_BASE + 0x2000)
+#define DRV_GPIOA_BASEADDR           (DRV_AHB1PERIPH_BASE + 0x0000)
+#define DRV_GPIOB_BASEADDR           (DRV_AHB1PERIPH_BASE + 0x0400)
+#define DRV_GPIOC_BASEADDR           (DRV_AHB1PERIPH_BASE + 0x0800)
+#define DRV_GPIOD_BASEADDR           (DRV_AHB1PERIPH_BASE + 0x0C00)
+#define DRV_GPIOE_BASEADDR           (DRV_AHB1PERIPH_BASE + 0x1000)
+#define DRV_GPIOF_BASEADDR           (DRV_AHB1PERIPH_BASE + 0x1400)
+#define DRV_GPIOG_BASEADDR           (DRV_AHB1PERIPH_BASE + 0x1800)
+#define DRV_GPIOH_BASEADDR           (DRV_AHB1PERIPH_BASE + 0x1C00)
+#define DRV_GPIOI_BASEADDR           (DRV_AHB1PERIPH_BASE + 0x2000)
 
 // Base addresses of peripherals which are hanging on APB1 bus
 
-#define DRV_I2C1_BASEADDR            (APB1PERIPH_BASE + 0x5400)
-#define DRV_I2C2_BASEADDR            (APB1PERIPH_BASE + 0x5800)
-#define DRV_I2C3_BASEADDR            (APB1PERIPH_BASE + 0x5C00)
-#define DRV_SPI2_BASEADDR            (APB1PERIPH_BASE + 0x3800)
-#define DRV_SPI3_BASEADDR            (APB1PERIPH_BASE + 0x3C00)
-#define DRV_USART2_BASEADDR          (APB1PERIPH_BASE + 0x4400)
-#define DRV_USART3_BASEADDR          (APB1PERIPH_BASE + 0x4800)
-#define DRV_UART4_BASEADDR           (APB1PERIPH_BASE + 0x4C00)
-#define DRV_UART5_BASEADDR           (APB1PERIPH_BASE + 0x5000)
+#define DRV_I2C1_BASEADDR            (DRV_APB1PERIPH_BASE + 0x5400)
+#define DRV_I2C2_BASEADDR            (DRV_APB1PERIPH_BASE + 0x5800)
+#define DRV_I2C3_BASEADDR            (DRV_APB1PERIPH_BASE + 0x5C00)
+#define DRV_SPI2_BASEADDR            (DRV_APB1PERIPH_BASE + 0x3800)
+#define DRV_SPI3_BASEADDR            (DRV_APB1PERIPH_BASE + 0x3C00)
+#define DRV_USART2_BASEADDR          (DRV_APB1PERIPH_BASE + 0x4400)
+#define DRV_USART3_BASEADDR          (DRV_APB1PERIPH_BASE + 0x4800)
+#define DRV_UART4_BASEADDR           (DRV_APB1PERIPH_BASE + 0x4C00)
+#define DRV_UART5_BASEADDR           (DRV_APB1PERIPH_BASE + 0x5000)
 
 // Base addresses of peripherals which are hanging on APB2 bus
 
 
-#define DRV_SPI1_BASEADDR            (APB2PERIPH_BASE + 0x3000)
-#define DRV_USART1_BASEADDR          (APB2PERIPH_BASE + 0x1000)
-#define DRV_USART6_BASEADDR          (APB2PERIPH_BASE + 0x1400)
-#define DRV_EXTI_BASEADDR            (APB2PERIPH_BASE + 0x3C00)
-#define DRV_SYSCFG_BASEADDR          (APB2PERIPH_BASE + 0x3800)
+#define DRV_SPI1_BASEADDR            (DRV_APB2PERIPH_BASE + 0x3000)
+#define DRV_USART1_BASEADDR          (DRV_APB2PERIPH_BASE + 0x1000)
+#define DRV_USART6_BASEADDR          (DRV_APB2PERIPH_BASE + 0x1400)
+#define DRV_EXTI_BASEADDR            (DRV_APB2PERIPH_BASE + 0x3C00)
+#define DRV_SYSCFG_BASEADDR          (DRV_APB2PERIPH_BASE + 0x3800)
 
 // Base address for RCC
 
-#define DRV_RCC_BASEADDR             (AHB1PERIPH_BASE + 0x3800)
+#define DRV_RCC_BASEADDR             (DRV_AHB1PERIPH_BASE + 0x3800)
 
 //Peripheral register definition structures
 
@@ -112,17 +112,17 @@ typedef struct
 
 // Peripheral definitions
 
-#define GPIOA ((GPIO_RegDef_t*) DRV_GPIOA_BASEADDR);
-#define GPIOB ((GPIO_RegDef_t*) DRV_GPIOB_BASEADDR);
-#define GPIOC ((GPIO_RegDef_t*) DRV_GPIOC_BASEADDR);
-#define GPIOD ((GPIO_RegDef_t*) DRV_GPIOD_BASEADDR);
-#define GPIOE ((GPIO_RegDef_t*) DRV_GPIOE_BASEADDR);
-#define GPIOF ((GPIO_RegDef_t*) DRV_GPIOF_BASEADDR);
-#define GPIOG ((GPIO_RegDef_t*) DRV_GPIOG_BASEADDR);
-#define GPIOH ((GPIO_RegDef_t*) DRV_GPIOH_BASEADDR);
-#define GPIOI ((GPIO_RegDef_t*) DRV_GPIOI_BASEADDR);
+#define GPIOA ((GPIO_RegDef_t*) DRV_GPIOA_BASEADDR)
+#define GPIOB ((GPIO_RegDef_t*) DRV_GPIOB_BASEADDR)
+#define GPIOC ((GPIO_RegDef_t*) DRV_GPIOC_BASEADDR)
+#define GPIOD ((GPIO_RegDef_t*) DRV_GPIOD_BASEADDR)
+#define GPIOE ((GPIO_RegDef_t*) DRV_GPIOE_BASEADDR)
+#define GPIOF ((GPIO_RegDef_t*) DRV_GPIOF_BASEADDR)
+#define GPIOG ((GPIO_RegDef_t*) DRV_GPIOG_BASEADDR)
+#define GPIOH ((GPIO_RegDef_t*) DRV_GPIOH_BASEADDR)
+#define GPIOI ((GPIO_RegDef_t*) DRV_GPIOI_BASEADDR)
 
-#define RCC ((RCC_RegDef_t*) DRV_RCC_BASEADDR);
+#define RCC ((RCC_RegDef_t*) DRV_RCC_BASEADDR)
 
 // Clock Enable Macros for GPIOx peripherals
 
