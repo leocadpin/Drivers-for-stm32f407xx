@@ -9,6 +9,7 @@
 #define STM32F407XX_H_
 
 #include <stdint.h>
+
 // base addresses of flash and SRAM memories
 
 #define DRV_FLASH_BASEADDR 	        0x08000000U   // flash memory
@@ -110,6 +111,17 @@ typedef struct
 
 }RCC_RegDef_t;
 
+//Peripheral register definition structure for EXTI
+typedef struct
+{
+	volatile uint32_t EXTI_IMR;
+	volatile uint32_t EXTI_EMR;
+	volatile uint32_t EXTI_RSTR;
+	volatile uint32_t EXTI_FTSR;
+	volatile uint32_t EXTI_SWIER;
+	volatile uint32_t EXTI_PR;
+}EXTI_RegDef_t;
+
 // Peripheral definitions
 
 #define GPIOA ((GPIO_RegDef_t*) DRV_GPIOA_BASEADDR)
@@ -123,6 +135,8 @@ typedef struct
 #define GPIOI ((GPIO_RegDef_t*) DRV_GPIOI_BASEADDR)
 
 #define RCC ((RCC_RegDef_t*) DRV_RCC_BASEADDR)
+
+#define EXTI ((EXTI_RegDef_t*) DRV_EXTI_BASEADDR)
 
 // Clock Enable Macros for GPIOx peripherals
 
@@ -161,6 +175,19 @@ typedef struct
 
 //Clock enable macros for SYSCFG peripherals
 #define SYSCFG_PCLK_EN()   (RCC->APB2ENR |= (1 << 14))
+
+
+//Macros to reset GPIOx peripherals
+
+#define GPIOA_REG_RESET()   do{ (RCC->AHB1RSTR |= (1 << 0)); (RCC->AHB1RSTR &= ~(1 << 0)); }while(0)
+#define GPIOB_REG_RESET()   do{ (RCC->AHB1RSTR |= (1 << 1)); (RCC->AHB1RSTR &= ~(1 << 1)); }while(0)
+#define GPIOC_REG_RESET()   do{ (RCC->AHB1RSTR |= (1 << 2)); (RCC->AHB1RSTR &= ~(1 << 2)); }while(0)
+#define GPIOD_REG_RESET()   do{ (RCC->AHB1RSTR |= (1 << 3)); (RCC->AHB1RSTR &= ~(1 << 3)); }while(0)
+#define GPIOE_REG_RESET()   do{ (RCC->AHB1RSTR |= (1 << 4)); (RCC->AHB1RSTR &= ~(1 << 4)); }while(0)
+#define GPIOF_REG_RESET()   do{ (RCC->AHB1RSTR |= (1 << 5)); (RCC->AHB1RSTR &= ~(1 << 5)); }while(0)
+#define GPIOG_REG_RESET()   do{ (RCC->AHB1RSTR |= (1 << 6)); (RCC->AHB1RSTR &= ~(1 << 6)); }while(0)
+#define GPIOH_REG_RESET()   do{ (RCC->AHB1RSTR |= (1 << 7)); (RCC->AHB1RSTR &= ~(1 << 7)); }while(0)
+#define GPIOI_REG_RESET()   do{ (RCC->AHB1RSTR |= (1 << 8)); (RCC->AHB1RSTR &= ~(1 << 8)); }while(0)
 
 // Clock disable Macros for GPIOx peripherals
 

@@ -73,7 +73,7 @@ typedef struct
 
 //Pull-up or pull-down configurations
 
-#define GPIO_NO_PUUD      0
+#define GPIO_NO_PUPD      0
 #define GPIO_PIN_PU       1
 #define GPIO_PIN_PD       2
 
