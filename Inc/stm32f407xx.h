@@ -10,6 +10,22 @@
 
 #include <stdint.h>
 
+
+//Processor specific details
+#define NVIC_ISER0     ((volatile uint32_t*) 0xE000E100)
+#define NVIC_ISER1     ((volatile uint32_t*) 0xE000E104)
+#define NVIC_ISER2     ((volatile uint32_t*) 0xE000E108)
+#define NVIC_ISER3     ((volatile uint32_t*) 0xE000E10C)
+#define NVIC_ICER0     ((volatile uint32_t*) 0xE000E180)
+#define NVIC_ICER1     ((volatile uint32_t*) 0xE000E184)
+#define NVIC_ICER2     ((volatile uint32_t*) 0xE000E188)
+#define NVIC_ICER3     ((volatile uint32_t*) 0xE000E18C)
+
+
+#define NVIC_PR_BASE_ADDR ((volatile uint32_t*) 0xE000E400)
+
+#define NO_PR_BITS_IMPLEMENTED 4
+
 // base addresses of flash and SRAM memories
 
 #define DRV_FLASH_BASEADDR 	        0x08000000U   // flash memory
@@ -116,11 +132,21 @@ typedef struct
 {
 	volatile uint32_t EXTI_IMR;
 	volatile uint32_t EXTI_EMR;
-	volatile uint32_t EXTI_RSTR;
+	volatile uint32_t EXTI_RTSR;
 	volatile uint32_t EXTI_FTSR;
 	volatile uint32_t EXTI_SWIER;
 	volatile uint32_t EXTI_PR;
 }EXTI_RegDef_t;
+
+//Peripheral register definition structure for SYSCFG
+typedef struct
+{
+	volatile uint32_t SYSCFG_MEMRMP;
+	volatile uint32_t SYSCFG_PMC;
+	volatile uint32_t SYSCFG_EXTICR[4];
+	uint32_t RESERVED[2];
+	volatile uint32_t SYSCFG_EXTICMPCR;
+}SYSCFG_RegDef_t;
 
 // Peripheral definitions
 
@@ -137,6 +163,8 @@ typedef struct
 #define RCC ((RCC_RegDef_t*) DRV_RCC_BASEADDR)
 
 #define EXTI ((EXTI_RegDef_t*) DRV_EXTI_BASEADDR)
+
+#define SYSCFG ((SYSCFG_RegDef_t*) DRV_SYSCFG_BASEADDR)
 
 // Clock Enable Macros for GPIOx peripherals
 
@@ -230,9 +258,25 @@ typedef struct
 #define SYSCFG_PCLK_DIS()   (RCC->APB2ENR &= ~(1 << 14))
 
 
+//IRQ Numbers
+#define IRQ_NO_EXTI0        6
+#define IRQ_NO_EXTI1        7
+#define IRQ_NO_EXTI2        8
+#define IRQ_NO_EXTI3        9
+#define IRQ_NO_EXTI4       10
+#define IRQ_NO_EXTI5_9     23
+#define IRQ_NO_EXTI10_15   40
 
-
-
+// Return port code for given gpiox base address
+#define GPIO_BASEADDR_TO_CODE(x)		((x == GPIOA) ? 0 :\
+									(x == GPIOB) ? 1 :\
+									(x == GPIOC) ? 2 :\
+									(x == GPIOD) ? 3 :\
+									(x == GPIOE) ? 4 :\
+									(x == GPIOF) ? 5 :\
+									(x == GPIOG) ? 6 :\
+									(x == GPIOH) ? 7 :\
+									(x == GPIOI) ? 8 : 0)
 
 //Generic MACROS
 
