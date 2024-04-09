@@ -95,7 +95,7 @@ void GPIO_toggle_output_pin(GPIO_RegDef_t *pGPIOx, uint8_t PinNumber);
 
 
 void GPIO_IRQInterruptConfig(uint8_t IRQNumber, uint8_t EnorDi);
-void GPIO_IRQPriorityConfig(uint8_t IRQNumber, uint8_t IRQPriority);
+void GPIO_IRQPriorityConfig(uint8_t IRQNumber, uint32_t IRQPriority);
 void GPIO_IRQHandling(uint8_t PinNumber);
 
 
