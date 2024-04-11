@@ -110,6 +110,20 @@ typedef struct
 
 typedef struct
 {
+	volatile uint32_t I2C_CR1;
+	volatile uint32_t I2C_CR2;
+	volatile uint32_t I2C_OAR1;
+	volatile uint32_t I2C_OAR2;
+	volatile uint32_t I2C_DR;
+	volatile uint32_t I2C_SR1;
+	volatile uint32_t I2C_SR2;
+	volatile uint32_t I2C_CCR;
+	volatile uint32_t I2C_TRISE;
+	volatile uint32_t I2C_FLTR;
+}I2C_RegDef_t;
+
+typedef struct
+{
 	volatile uint32_t RCC_CR;
 	volatile uint32_t RCC_PLLCFGR;
 	volatile uint32_t RCC_CFGR;
@@ -184,6 +198,10 @@ typedef struct
 #define SPI2 ((SPI_RegDef_t*) DRV_SPI2_BASEADDR)
 #define SPI3 ((SPI_RegDef_t*) DRV_SPI3_BASEADDR)
 #define SPI4 ((SPI_RegDef_t*) DRV_SPI4_BASEADDR)
+
+#define I2C1 ((I2C_RegDef_t*) DRV_I2C1_BASEADDR)
+#define I2C2 ((I2C_RegDef_t*) DRV_I2C2_BASEADDR)
+#define I2C3 ((I2C_RegDef_t*) DRV_I2C3_BASEADDR)
 
 // Clock Enable Macros for GPIOx peripherals
 
@@ -349,6 +367,39 @@ typedef struct
 #define SPI_CR1_CRCEN  	11
 #define SPI_CR1_BIDOE  	12
 #define SPI_CR1_BIDMD  	13
+
+//Bit position definitions for i2c registers
+
+#define I2C_CR1_PE			0
+#define I2C_CR1_SMBUS		1
+#define I2C_CR1_SMBTYPE 	3
+#define I2C_CR1_ENARP   	4
+#define I2C_CR1_ENPEC   	5
+#define I2C_CR1_ENGC		6
+#define I2C_CR1_NOSTRETCH 	7
+#define I2C_CR1_START 		8
+#define I2C_CR1_STOP 		9
+#define I2C_CR1_ACK 		10
+#define I2C_CR1_POS			11
+#define I2C_CR1_PEC 		12
+#define I2C_CR1_ALERT 		13
+#define I2C_CR1_SWRST		15
+
+
+#define I2C_SR_SB 			0
+#define I2C_SR_ADDR 		1
+#define I2C_SR_BTF 			2
+#define I2C_SR_ADD10		3
+#define I2C_SR_STOPF 		4
+#define I2C_SR_RxNE			6
+#define I2C_SR_TxE			7
+#define I2C_SR_BERR			8
+#define I2C_SR_ARLO			9
+#define I2C_SR_AF			10
+#define I2C_SR_OVR			11
+#define I2C_SR_PECERR		12
+#define I2C_SR_TIMEOUT		14
+#define I2C_SR_SMBALERT		15
 
 #endif /* STM32F407XX_H_ */
 
