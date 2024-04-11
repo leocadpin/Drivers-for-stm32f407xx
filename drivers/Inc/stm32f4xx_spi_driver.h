@@ -130,8 +130,6 @@ typedef struct
 
 void SPI_PeriClock_Control(SPI_RegDef_t *pSPIx, uint8_t EnorDi);
 
-void SPI_Init(SPI_Handle_t *); //Initialize SPI port and pin
-void SPI_DeInit(SPI_RegDef_t *pSPIx);
 
 
 /*

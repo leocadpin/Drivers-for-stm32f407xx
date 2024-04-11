@@ -261,6 +261,11 @@ typedef struct
 #define SPI3_REG_RESET()   do{ (RCC->APB1RSTR |= (1 << 15)); (RCC->APB1RSTR &= ~(1 << 15)); }while(0)
 #define SPI4_REG_RESET()   do{ (RCC->APB2RSTR |= (1 << 13)); (RCC->APB2RSTR &= ~(1 << 13)); }while(0)
 
+//Macros to reset I2Cx peripherals
+#define I2C1_REG_RESET()   do{ (RCC->APB1RSTR |= (1 << 21)); (RCC->APB1RSTR &= ~(1 << 21)); }while(0)
+#define I2C2_REG_RESET()   do{ (RCC->APB1RSTR |= (1 << 22)); (RCC->APB1RSTR &= ~(1 << 22)); }while(0)
+#define I2C3_REG_RESET()   do{ (RCC->APB1RSTR |= (1 << 23)); (RCC->APB1RSTR &= ~(1 << 23)); }while(0)
+
 // Clock disable Macros for GPIOx peripherals
 
 #define GPIOA_PCLK_DIS()  (RCC->AHB1ENR &= ~(1 << 0))
@@ -385,21 +390,35 @@ typedef struct
 #define I2C_CR1_ALERT 		13
 #define I2C_CR1_SWRST		15
 
+#define I2C_CR2_FREQ		0
+#define I2C_CR2_ITERREN		8
+#define I2C_CR2_ITEVTEN		9
+#define I2C_CR2_ITBUFEN		10
 
-#define I2C_SR_SB 			0
-#define I2C_SR_ADDR 		1
-#define I2C_SR_BTF 			2
-#define I2C_SR_ADD10		3
-#define I2C_SR_STOPF 		4
-#define I2C_SR_RxNE			6
-#define I2C_SR_TxE			7
-#define I2C_SR_BERR			8
-#define I2C_SR_ARLO			9
-#define I2C_SR_AF			10
-#define I2C_SR_OVR			11
-#define I2C_SR_PECERR		12
-#define I2C_SR_TIMEOUT		14
-#define I2C_SR_SMBALERT		15
+#define I2C_SR1_SB 			0
+#define I2C_SR1_ADDR 		1
+#define I2C_SR1_BTF 		2
+#define I2C_SR1_ADD10		3
+#define I2C_SR1_STOPF 		4
+#define I2C_SR1_RxNE		6
+#define I2C_SR1_TxE			7
+#define I2C_SR1_BERR		8
+#define I2C_SR1_ARLO		9
+#define I2C_SR1_AF			10
+#define I2C_SR1_OVR			11
+#define I2C_SR1_PECERR		12
+#define I2C_SR1_TIMEOUT		14
+#define I2C_SR1_SMBALERT	15
+
+#define I2C_SR2_MSL			0
+#define I2C_SR2_BUSY 		1
+#define I2C_SR2_TRA			2
+#define I2C_SR2_GENCALL		4
+#define I2C_SR2_DUALF		7
+
+#define I2C_CCR_CCR 		0
+#define I2C_CCR_DUTY 		14
+#define I2C_CCR_FS	 		15
 
 #endif /* STM32F407XX_H_ */
 
