@@ -55,8 +55,10 @@ void I2C_DeInit(I2C_RegDef_t *pI2Cx);
 /*
  * Send and Receive Data
  */
-void I2C_SendData(I2C_RegDef_t *pI2Cx, uint8_t *pTXbuffer, uint32_t len);
+void I2C_MasterSendData(I2C_Handle_t *pI2CHandle, uint8_t *pTXbuffer, uint32_t len, uint8_t slave_addr);
 void I2C_ReceiveData(I2C_RegDef_t *pI2Cx, uint8_t *pRXbuffer, uint32_t len);
+
+
 
 /*
  * Get flag status
@@ -98,6 +100,17 @@ void I2C_ApplicationEventCallback(I2C_Handle_t *pI2CHandle, uint8_t I2C_event);
 #define I2C_FM_DUTY_2		0
 #define I2C_FM_DUTY_16_9	1
 
+/*
+ * I2C status flags
+ */
+#define I2C_FLAG_TXE 	 	(1 << I2C_SR1_TxE)
+#define I2C_FLAG_RXE  		(1 << I2C_SR1_RxE)
+#define I2C_FLAG_SB		 	(1 << I2C_SR1_SB)
+#define I2C_FLAG_ADDR 	 	(1 << I2C_SR1_ADDR)
+#define I2C_FLAG_BTF 	    (1 << I2C_SR1_BTF)
+#define I2C_FLAG_STOPF	  	(1 << I2C_SR1_STOPF)
+#define I2C_FLAG_OVR	  	(1 << I2C_SR1_OVR)
+#define I2C_FLAG_BERR	  	(1 << I2C_SR1_BERR)
 
 
 #endif /* INC_STM32F4XX_I2C_DRIVER_H_ */
