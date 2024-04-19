@@ -319,6 +319,12 @@ typedef struct
 #define IRQ_NO_SPI2 	   36
 #define IRQ_NO_SPI3 	   51
 #define IRQ_NO_SPI4 	   84
+#define IRQ_NO_I2C1_EV 	   31
+#define IRQ_NO_I2C1_ER 	   32
+#define IRQ_NO_I2C2_EV 	   33
+#define IRQ_NO_I2C2_ER 	   34
+#define IRQ_NO_I2C3_EV 	   72
+#define IRQ_NO_I2C3_ER 	   73
 
 // Return port code for given gpiox base address
 #define GPIO_BASEADDR_TO_CODE(x)		((x == GPIOA) ? 0 :\
