@@ -100,9 +100,6 @@ void SPI_PeriClock_Control(SPI_RegDef_t *pSPIx, uint8_t EnorDi)
  * @Note           - none
  */
 
-/*
- * Peripheral Clock Setup
- */
 void SPI_Init(SPI_Handle_t *pSPIHandle)
 {
 	uint32_t temp_reg = 0;
