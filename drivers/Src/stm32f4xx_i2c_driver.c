@@ -65,76 +65,76 @@
 
  }
 
-/**************************************************
- * @fn             - RCC_Get_PCLK_val()
- *
- * @brief          - Initialize i2c with config values
- *
- * @param[in]      - i2c Handle structure pointer
- * @param[in]      -
- * @param[in]      -
- *
- * @return         - none
- *
- * @Note           - none
- */
-
-uint16_t AHB_PreScaler[9] = {2,4,8,16,32,64,128,256,512};
-uint16_t APB1_PreScaler[4] = {2,4,8,16};
-
-uint32_t RCC_Get_PCLK_val(void)
-{
-	uint32_t pclk1;
-	uint32_t Systemclk;
-
-	uint8_t clksrc;
-	uint8_t temp;
-	uint8_t ahb_p;
-	uint8_t apb1_p;
-
-	clksrc = ((RCC->RCC_CFGR >> 2) & 0x3);
-
-	//Clock source calculations
-	if(clksrc == 0)
-	{
-		Systemclk = 16000000;
-	}
-	if(clksrc == 1)
-	{
-		Systemclk = 8000000;
-	}
-	if(clksrc == 2)
-	{
-		//value would come from pll;
-	}
-
-	//Prescaler calculations
-	temp = ( (RCC->RCC_CFGR >> 4) & 0XF );
-
-	if(temp < 8)
-	{
-		ahb_p = 1;
-	}
-	else
-	{
-		ahb_p = AHB_PreScaler[temp-8];
-	}
-
-	temp = ( (RCC->RCC_CFGR >> 10) & 0X7 );
-
-	if(temp < 4)
-	{
-		apb1_p = 1;
-	}
-	else
-	{
-		apb1_p = APB1_PreScaler[temp-4];
-	}
-
-	pclk1 = (Systemclk / ahb_p) / apb1_p;
-
-	return pclk1;
-}
+///**************************************************
+// * @fn             - RCC_Get_PCLK_val()
+// *
+// * @brief          - Initialize i2c with config values
+// *
+// * @param[in]      - i2c Handle structure pointer
+// * @param[in]      -
+// * @param[in]      -
+// *
+// * @return         - none
+// *
+// * @Note           - none
+// */
+//
+//uint16_t AHB_PreScaler[9] = {2,4,8,16,32,64,128,256,512};
+//uint16_t APB1_PreScaler[4] = {2,4,8,16};
+//
+//uint32_t RCC_Get_PCLK_val(void)
+//{
+//	uint32_t pclk1;
+//	uint32_t Systemclk;
+//
+//	uint8_t clksrc;
+//	uint8_t temp;
+//	uint8_t ahb_p;
+//	uint8_t apb1_p;
+//
+//	clksrc = ((RCC->RCC_CFGR >> 2) & 0x3);
+//
+//	//Clock source calculations
+//	if(clksrc == 0)
+//	{
+//		Systemclk = 16000000;
+//	}
+//	if(clksrc == 1)
+//	{
+//		Systemclk = 8000000;
+//	}
+//	if(clksrc == 2)
+//	{
+//		//value would come from pll;
+//	}
+//
+//	//Prescaler calculations
+//	temp = ( (RCC->RCC_CFGR >> 4) & 0XF );
+//
+//	if(temp < 8)
+//	{
+//		ahb_p = 1;
+//	}
+//	else
+//	{
+//		ahb_p = AHB_PreScaler[temp-8];
+//	}
+//
+//	temp = ( (RCC->RCC_CFGR >> 10) & 0X7 );
+//
+//	if(temp < 4)
+//	{
+//		apb1_p = 1;
+//	}
+//	else
+//	{
+//		apb1_p = APB1_PreScaler[temp-4];
+//	}
+//
+//	pclk1 = (Systemclk / ahb_p) / apb1_p;
+//
+//	return pclk1;
+//}
 
 /**************************************************
  * @fn             - I2C_Init()
