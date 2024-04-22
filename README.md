@@ -22,5 +22,5 @@ To utilize these drivers in your STM32F407xx projects, simply include the necess
 
 Contributions to this repository are welcome! If you find any issues, have suggestions for improvements, or want to add new features, feel free to fork this repository and submit a pull request with your changes.
 
-## License
+
 
