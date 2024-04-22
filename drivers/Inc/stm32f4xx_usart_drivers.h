@@ -9,6 +9,7 @@
 #define INC_STM32F4XX_USART_DRIVERS_H_
 
 #include "stm32f407xx.h"
+#include "stddef.h"
 #include "stm32f4xx_rcc_driver.h"
 /*
  * Configuration structure for USART
@@ -52,6 +53,10 @@ void USART_Deinit(USART_RegDef_t *pUSARTx);
 void USART_PeriClockControl(USART_RegDef_t *pUSARTx, uint8_t en_or_di);
 void USART_PeripheralControl(USART_RegDef_t *pUSARTx, uint8_t en_or_di);
 
+/*
+ * Set baudrate
+ */
+void USART_SetBaudRate(USART_RegDef_t *pUSARTx, uint32_t BaudRate);
 
 /*
  * Flag functions
@@ -65,6 +70,11 @@ void USART_Clear_Flag(USART_RegDef_t *pUSARTx, uint16_t status_flag_name);
  */
 void USART_IRQ_interrupt_config(uint8_t IRQ_number, uint8_t en_or_di);
 void USART_IRQ_priority_config(uint8_t IRQ_number, uint32_t en_or_di);
+void USART_IRQHandling(USART_Handle_t *pUSARTHandle);
+/*
+ * Application callback
+ */
+void USART_ApplicationEventCallback(USART_Handle_t *pUSARTHandle,uint8_t AppEv);
 
 /*
  * @USART_Parity_Control
@@ -140,5 +150,17 @@ void USART_IRQ_priority_config(uint8_t IRQ_number, uint32_t en_or_di);
 #define USART_READY				0
 #define USART_BUSY_IN_RX		1
 #define USART_BUSY_IN_TX		2
+
+/*
+ *  USART application events macros
+ */
+#define 	USART_EVENT_TX_CMPLT	0
+#define		USART_EVENT_RX_CMPLT	1
+#define		USART_EVENT_IDLE		2
+#define		USART_EVENT_CTS			3
+#define		USART_EVENT_PE			4
+#define		USART_ERROR_FE			5
+#define		USART_ERROR_NE			6
+#define		USART_ERROR_ORE			7
 
 #endif /* INC_STM32F4XX_USART_DRIVERS_H_ */
